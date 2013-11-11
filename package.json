@@ -1,0 +1,27 @@
+{
+  "family": "seedit",
+  "name": "loginBox",
+  "version": "0.0.1",
+  "description": "common login Dialog",
+  "homepage": "https://github.com/airyland/seedit.ui.loginBox",
+  "author": "",
+  "maintainers": [
+    "",
+    ""
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/airyland/seedit.ui.loginBox.git"
+  },
+  "bugs": {
+    "url": ""
+  },
+  "keywords": [],
+  "licenses": "MIT",
+  "spm": {
+    "output": ["loginBox.js"],
+    "alias": {},
+    "devAlias": {},
+    "engines": {}
+  }
+}
