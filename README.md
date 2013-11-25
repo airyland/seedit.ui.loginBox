@@ -2,8 +2,8 @@
 
 ---
 
-[![Build Status](https://secure.travis-ci.org/airyland/seedit.ui.loginBox.png)](https://travis-ci.org/seedit/loginBox)
-[![Coverage Status](https://coveralls.io/repos/airyland/seedit.ui.loginBox/badge.png?branch=master)](https://coveralls.io/r/seedit/loginBox)
+[![Build Status](https://secure.travis-ci.org/airyland/seedit.ui.loginBox.png)](https://travis-ci.org/airyland/seedit.ui.loginBox)
+[![Coverage Status](https://coveralls.io/repos/airyland/seedit.ui.loginBox/badge.png?branch=master)](https://coveralls.io/r/airyland/seedit.ui.loginBox)
 
 
 网站统一登录弹窗
@@ -21,26 +21,9 @@
 触发元素,请填写`选择器`
 
 
-### successSignin *function*
-
-成功登录回调，参数为API返回的用户信息
-
-### errorsSignin *function*
-
-登录失败回调，参数为服务器错误信息
-
-### initialize *function*
-
-弹窗打开时回调函数
-
-### beforunload *function*
-
-弹窗关闭时回调
-
-
 ### dataAppend *function or Object*
 
-发送请求前修改参数
+发送请求前修改参数，同 `Dialog.setData`
 
 
 ## API接口
@@ -49,22 +32,32 @@
 
 关闭弹窗
 
+### Dialog.setData(key,val)
+同选项 `dataAppend`
+
+### Dialog.shake()
+
+`未支持..` 振动窗口，一般用于登录失败的时候提醒
+
+### Dialog.on(event,callback)
+见下面接口事件说明。
+
+## 接口事件说明
+
++ `open` 弹窗打开
++ `close` 弹窗关闭
++ `submitStart` 点击提交按钮
++ `submitDone` 提交结束，回调参数为 `success`或者`error`
++ `authSuccess` 登录成功，回调参数为 uid
++ `authError`   登录失败，回调参数为 {error_code:1001,error_message:'出错消息'}, 失败次数
++ `userinfoGotSuccess` 用户信息获取成功，回调参数为用户信息
++ `userinfoGotError` 用户信息获取失败，回调参数为出错信息
 
 ## 示例
 
 ``` javascript    
     var $loginBox = new loginBox({
         trigger:'#login',
-        successSignin:function(user){
-            // 成功登录回调
-            $loginBox.close();
-        },
-        errorSignin:function(err){
-            // 失败登录回调
-        },
-        initialize:function(){
-            // 弹窗打开时执行
-        },
         beforeunload:function(){
             // 关闭时执行
         }
