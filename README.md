@@ -23,7 +23,7 @@
 
 ### dataAppend *function or Object*
 
-发送请求前修改参数，同 `Dialog.setData`
+发送请求前修改参数，同 `Dialog.setData()`
 
 
 ## API接口
