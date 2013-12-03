@@ -1,11 +1,11 @@
-define(function(require, exports, module) {
+define(function (require, exports, module) {
     var $ = jQuery;
     // dialog
     require('seedit/dialog/0.0.1/dialog');
     // async require styles
     require.async(['seedit/alert/0.0.1/alert.css', './loginBox.css']);
     // COMMON API support
-    var API = require('../../../API/src/API');
+    var API = require('seedit/API/0.0.1/API');
     // event emitter
     var Events = require('arale/events/1.1.0/events.js');
     // fail times
@@ -48,7 +48,7 @@ define(function(require, exports, module) {
     loginHTML += "    <\/div>";
     loginHTML += "<\/div>";
 
-    $('body').on('keydown', 'input, select, textarea', function(e) {
+    $('body').on('keydown', 'input, select, textarea', function (e) {
         var self = $(this),
             form = self.parents('form:eq(0)'),
             focusable, next;
@@ -64,28 +64,28 @@ define(function(require, exports, module) {
         }
     });
 
-    var loginBox = function(option) {
+    var loginBox = function (option) {
         option = option || {};
         var o = {};
         $.extend(o, option);
-        this.o = (function() {
+        this.o = (function () {
             return o;
         })();
 
         /* 交互 */
         //点击登录，按钮disable,如果有出错消息进行清除
-        this.on('submitStart', function() {
+        this.on('submitStart', function () {
             $('#lb_signin').prop('diabled', true).text('提交中');
         });
 
         // 登录结束，按钮enable
-        this.on('submitDone', function() {
+        this.on('submitDone', function () {
             $('#lb_signin').prop('diabled', false).text('登录');
         });
 
         // 登录失败，显示错误
         // 登录失败超过5次，提示找回密码
-        this.on('authError', function(error, times) {
+        this.on('authError', function (error, times) {
             $alert.find('span').text(error.error_message).closest('.alert').show();
             if (times === 5) {
                 $alert.find('span').html('亲是忘记密码了么，<button class="x-btn x-btn-danger x-btn-sm x-btn-small pull-right" type="button">点我去找回</button>');
@@ -97,20 +97,20 @@ define(function(require, exports, module) {
 
     loginBox.prototype = {
         // initialize
-        init: function(option) {
+        init: function (option) {
             var _this = this;
-            var submitHandler = function(e) {
+            var submitHandler = function (e) {
                 e.preventDefault();
                 // validator
                 var $username = $('#lb_username'),
                     $pwd = $('#lb_password');
                 // remove error class when blur
-                var errorRemover = function(){
-                    if($(this).val()) $(this).removeClass('lb_error');
-                }
+                var errorRemover = function () {
+                    if ($(this).val()) $(this).removeClass('lb_error');
+                };
 
-                $username.on('blur',errorRemover);
-                $pwd.on('blur',errorRemover);
+                $username.on('blur', errorRemover);
+                $pwd.on('blur', errorRemover);
 
                 if (!$.trim($username.val())) {
                     $username.addClass('lb_error').focus();
@@ -120,43 +120,43 @@ define(function(require, exports, module) {
                     $pwd.addClass('lb_error').focus();
                     return;
                 }
-               
+
                 // validate pass, submit the form
                 _this.trigger('submitStart');
                 API.post('ucenter/login', {
                     username: $username.val(),
                     password: $pwd.val()
-                }, function(data) {
+                }, function (data) {
                     _this.trigger('submitDone', 'success');
                     _this.trigger('authSuccess', data.data.uid);
-                    API.get('bbs/common_member', function(data) {
+                    API.get('bbs/common_member', function (data) {
                         _this.trigger('userinfoGotSuccess', data);
-                    }, function(error) {
+                    }, function (error) {
                         _this.trigger('userinfoGotError', error)
                     })
-                }, function(error) {
+                }, function (error) {
                     authFailNo++;
                     _this.trigger('submitDone', 'error');
                     _this.trigger('authError', error, authFailNo);
                 })
             };
-            var showDialog = function() {
+            var showDialog = function () {
                 $.dialog(loginHTML, {
                     title: false,
                     closebtn: true,
                     border: false,
                     drag: true,
-                    onshow: function() {
+                    onshow: function () {
                         _this.trigger('open');
                         $alert = $('#JS_lb_alert');
-                        setTimeout(function() {
+                        setTimeout(function () {
                             $('#lb_username').focus();
                         }, 0);
                         // 登录行为
                         $('#lb_signin').click(submitHandler);
                         $('#JS_lb_form').submit(submitHandler);
                     },
-                    onclose: function() {
+                    onclose: function () {
                         _this.trigger('close');
                     }
                 });
@@ -169,7 +169,7 @@ define(function(require, exports, module) {
             }
             return this;
         },
-        beforeunload: function() {
+        beforeunload: function () {
             return this;
         }
     }
