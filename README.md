@@ -21,7 +21,7 @@
 触发元素,请填写`选择器`
 
 
-### dataAppend *function or Object*
+### setData *function or Object*
 
 发送请求前修改参数，同 `Dialog.setData()`
 
@@ -64,15 +64,15 @@
     });
 ```
 
-`dataAppend`参数可为对象或者函数
+`setData`参数可为对象或者函数
 
 ```javascript
     // 当为对象时，视为直接添加参数，如果key相同，将会覆盖原来的参数
-    dataAppend:{
+    setData:{
         isIframe:'true'
     }
     // 当为函数时，可以添加或者修改发送前的参数
-    dataAppend:function(data){
+    setData:function(data){
         data.isIframe = 'true';
         return data;
     }
