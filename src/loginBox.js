@@ -99,6 +99,7 @@ define(function (require, exports, module) {
         // initialize
         init: function (option) {
             var _this = this;
+            var dialog;
             var submitHandler = function (e) {
                 e.preventDefault();
                 // validator
@@ -141,7 +142,7 @@ define(function (require, exports, module) {
                 })
             };
             var showDialog = function () {
-                $.dialog(loginHTML, {
+                dialog = $.dialog(loginHTML, {
                     title: false,
                     closebtn: true,
                     border: false,
@@ -172,7 +173,7 @@ define(function (require, exports, module) {
         beforeunload: function () {
             return this;
         }
-    }
+    };
     Events.mixTo(loginBox);
     module.exports = loginBox;
 });
