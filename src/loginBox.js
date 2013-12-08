@@ -1,4 +1,5 @@
 define(function (require, exports, module) {
+    // @todo 支持读取最近登录用户名
     var $ = jQuery;
     // dialog
     require('seedit/dialog/0.0.1/dialog');
@@ -172,6 +173,9 @@ define(function (require, exports, module) {
         },
         beforeunload: function () {
             return this;
+        },
+        close:function(){
+            $.dialog.hide();
         }
     };
     Events.mixTo(loginBox);
