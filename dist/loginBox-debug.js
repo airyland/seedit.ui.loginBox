@@ -1,4 +1,5 @@
 define("seedit/loginBox/0.0.1/loginBox-debug", [ "seedit/dialog/0.0.1/dialog-debug", "seedit/API/0.0.1/API-debug", "arale/events/1.1.0/events-debug" ], function(require, exports, module) {
+    // @todo 支持读取最近登录用户名
     var $ = jQuery;
     // dialog
     require("seedit/dialog/0.0.1/dialog-debug");
@@ -89,6 +90,7 @@ define("seedit/loginBox/0.0.1/loginBox-debug", [ "seedit/dialog/0.0.1/dialog-deb
         // initialize
         init: function(option) {
             var _this = this;
+            var dialog;
             var submitHandler = function(e) {
                 e.preventDefault();
                 // validator
@@ -127,7 +129,7 @@ define("seedit/loginBox/0.0.1/loginBox-debug", [ "seedit/dialog/0.0.1/dialog-deb
                 });
             };
             var showDialog = function() {
-                $.dialog(loginHTML, {
+                dialog = $.dialog(loginHTML, {
                     title: false,
                     closebtn: true,
                     border: false,
@@ -157,6 +159,9 @@ define("seedit/loginBox/0.0.1/loginBox-debug", [ "seedit/dialog/0.0.1/dialog-deb
         },
         beforeunload: function() {
             return this;
+        },
+        close: function() {
+            $.dialog.hide();
         }
     };
     Events.mixTo(loginBox);
