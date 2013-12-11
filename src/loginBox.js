@@ -49,7 +49,7 @@ define(function (require, exports, module) {
     loginHTML += "    <\/div>";
     loginHTML += "<\/div>";
 
-    $('body').on('keydown', 'input, select, textarea', function (e) {
+    $('body').on('keydown', '#JS_lb_form input,#JS_lb_form select,#JS_lb_form textarea', function (e) {
         var self = $(this),
             form = self.parents('form:eq(0)'),
             focusable, next;
@@ -174,7 +174,7 @@ define(function (require, exports, module) {
         beforeunload: function () {
             return this;
         },
-        close:function(){
+        close: function () {
             $.dialog.hide();
         }
     };
