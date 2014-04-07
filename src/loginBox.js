@@ -2,13 +2,13 @@ define(function (require, exports, module) {
     // @todo 支持读取最近登录用户名
     var $ = jQuery;
     // dialog
-    require('seedit/dialog/0.0.1/dialog');
+    require('moe/dialog/0.0.1/dialog');
     // async require styles
-    require.async(['seedit/alert/0.0.1/alert.css', './loginBox.css']);
+    require.async(['moe/alert/0.0.1/alert.css', './loginBox.css']);
     // COMMON API support
-    var API = require('seedit/API/0.0.1/API');
+    var API = require('moe/API/0.0.3/API');
     // event emitter
-    var Events = require('arale/events/1.1.0/events.js');
+    var Events = require('arale/events/1.1.0/events');
     // fail times
     var authFailNo = 0;
     // login template

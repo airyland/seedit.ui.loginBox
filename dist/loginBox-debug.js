@@ -1,14 +1,14 @@
-define("seedit/loginBox/0.0.1/loginBox-debug", [ "seedit/dialog/0.0.1/dialog-debug", "seedit/API/0.0.1/API-debug", "arale/events/1.1.0/events-debug" ], function(require, exports, module) {
+define("moe/seedit.loginBox/0.0.1/loginBox-debug", [ "moe/dialog/0.0.1/dialog-debug", "moe/API/0.0.3/API-debug", "arale/events/1.1.0/events-debug" ], function(require, exports, module) {
     // @todo 支持读取最近登录用户名
     var $ = jQuery;
     // dialog
-    require("seedit/dialog/0.0.1/dialog-debug");
+    require("moe/dialog/0.0.1/dialog-debug");
     // async require styles
-    require.async([ "seedit/alert/0.0.1/alert.css", "./loginBox.css" ]);
+    require.async([ "moe/alert/0.0.1/alert.css", "./loginBox.css" ]);
     // COMMON API support
-    var API = require("seedit/API/0.0.1/API-debug");
+    var API = require("moe/API/0.0.3/API-debug");
     // event emitter
-    var Events = require("arale/events/1.1.0/events-debug.js");
+    var Events = require("arale/events/1.1.0/events-debug");
     // fail times
     var authFailNo = 0;
     // login template
@@ -47,7 +47,7 @@ define("seedit/loginBox/0.0.1/loginBox-debug", [ "seedit/dialog/0.0.1/dialog-deb
     loginHTML += "    </div>";
     loginHTML += "    </div>";
     loginHTML += "</div>";
-    $("body").on("keydown", "input, select, textarea", function(e) {
+    $("body").on("keydown", "#JS_lb_form input,#JS_lb_form select,#JS_lb_form textarea", function(e) {
         var self = $(this), form = self.parents("form:eq(0)"), focusable, next;
         if (e.keyCode == 13) {
             focusable = form.find("input,select,textarea").filter(":visible");

@@ -1,6 +1,6 @@
 {
-    "family": "seedit",
-    "name": "loginBox",
+    "family": "moe",
+    "name": "seedit.loginBox",
     "version": "0.0.1",
     "description": "common login Dialog",
     "homepage": "https://github.com/airyland/seedit.ui.loginBox",
