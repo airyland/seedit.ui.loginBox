@@ -7,6 +7,8 @@ define(function (require, exports, module) {
     require.async(['moe/alert/0.0.1/alert.css', './loginBox.css']);
     // COMMON API support
     var API = require('moe/API/0.0.3/API');
+    // user module
+    var User = require('moe/seedit.user/0.0.2/seedit.user');
     // event emitter
     var Events = require('arale/events/1.1.0/events');
     // fail times
@@ -14,6 +16,9 @@ define(function (require, exports, module) {
     // login template
     var loginHTML = "";
     var $alert;
+    var lastLoginInfo = User.getLastLoginInfo();
+    var lastLoginName = lastLoginInfo['username'] || '';
+
 
     loginHTML += "<div class=\"loginBox\">";
     loginHTML += "    <form action=\"\" id=\"JS_lb_form\">";
@@ -93,6 +98,11 @@ define(function (require, exports, module) {
             }
         });
 
+        // 获取用户信息成功时，保存到本地
+        this.on('userinfoGotSuccess', function (data) {
+            User.setLastLoginInfo(data.username, data.uid);
+        });
+
         return this.init(o);
     };
 
@@ -151,9 +161,17 @@ define(function (require, exports, module) {
                     onshow: function () {
                         _this.trigger('open');
                         $alert = $('#JS_lb_alert');
-                        setTimeout(function () {
-                            $('#lb_username').focus();
-                        }, 0);
+                        // 有登录记录时，自动填写用户名，光标直接到密码输入框
+                        if (lastLoginName) {
+                            $('#lb_username').val(lastLoginName);
+                            setTimeout(function () {
+                                $('#lb_password').focus();
+                            }, 0);
+                        } else {
+                            setTimeout(function () {
+                                $('#lb_username').focus();
+                            }, 0);
+                        }
                         // 登录行为
                         $('#lb_signin').click(submitHandler);
                         $('#JS_lb_form').submit(submitHandler);
