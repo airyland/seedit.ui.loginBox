@@ -1,8 +1,8 @@
-define("moe/seedit.loginBox/0.0.2/loginBox-debug", [ "moe/dialog/0.0.1/dialog-debug", "moe/API/0.0.3/API-debug", "arale/events/1.1.0/events-debug" ], function(require, exports, module) {
+define("moe/seedit.loginBox/0.0.3/loginBox-debug", [ "moe/dialog/0.0.2/dialog-debug", "moe/API/0.0.3/API-debug", "arale/events/1.1.0/events-debug" ], function(require, exports, module) {
     // @todo 支持读取最近登录用户名
     var $ = jQuery;
     // dialog
-    require("moe/dialog/0.0.1/dialog-debug");
+    var dialogs = require("moe/dialog/0.0.2/dialog-debug");
     // async require styles
     require.async([ "moe/alert/0.0.1/alert.css", "./loginBox.css" ]);
     // COMMON API support
@@ -137,7 +137,7 @@ define("moe/seedit.loginBox/0.0.2/loginBox-debug", [ "moe/dialog/0.0.1/dialog-de
                 });
             };
             var showDialog = function() {
-                dialog = $.dialog(loginHTML, {
+                dialog = dialogs.dialog(loginHTML, {
                     title: false,
                     closebtn: true,
                     border: false,

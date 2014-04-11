@@ -2,7 +2,7 @@ define(function (require, exports, module) {
     // @todo 支持读取最近登录用户名
     var $ = jQuery;
     // dialog
-    require('moe/dialog/0.0.1/dialog');
+    var dialogs =  require('moe/dialog/0.0.2/dialog');
     // async require styles
     require.async(['moe/alert/0.0.1/alert.css', './loginBox.css']);
     // COMMON API support
@@ -153,7 +153,7 @@ define(function (require, exports, module) {
                 })
             };
             var showDialog = function () {
-                dialog = $.dialog(loginHTML, {
+                dialog = dialogs.dialog(loginHTML, {
                     title: false,
                     closebtn: true,
                     border: false,
