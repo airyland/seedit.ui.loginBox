@@ -19,6 +19,7 @@
 ###  trigger *String*
 
 触发元素,请填写`选择器`
+为空时，直接弹出登录框
 
 
 ### setData *function or Object*
@@ -28,18 +29,9 @@
 
 ## API接口
 
-### Dialog.close()
 
-关闭弹窗
 
-### Dialog.setData(key,val)
-同选项 `dataAppend`
-
-### Dialog.shake()
-
-`未支持..` 振动窗口，一般用于登录失败的时候提醒
-
-### Dialog.on(event,callback)
+### box.on(event,callback)
 见下面接口事件说明。
 
 ## 接口事件说明
@@ -56,24 +48,23 @@
 ## 示例
 
 ``` javascript    
-    var $loginBox = new loginBox({
-        trigger:'#login',
-        beforeunload:function(){
-            // 关闭时执行
-        }
+seajs.use('loginBox', function(loginBox) {
+    var $ = jQuery;
+    var box = new loginBox({});
+    box.on('open', function() {
+        console.log('open');
+    }).on('authSuccess', function(uid) {
+        console.log('登录成功啦', uid)
+    }).on('authError', function(error, times) {
+        console.log('登录失败啦', error.error_message, times);
+    }).on('userinfoGotSuccess', function(user) {
+        console.log('信息获取成功啦', user);
+    }).on('close', function() {
+        console.log('close');
     });
-```
-
-`setData`参数可为对象或者函数
-
-```javascript
-    // 当为对象时，视为直接添加参数，如果key相同，将会覆盖原来的参数
-    setData:{
-        isIframe:'true'
-    }
-    // 当为函数时，可以添加或者修改发送前的参数
-    setData:function(data){
-        data.isIframe = 'true';
-        return data;
-    }
+    box.on('all', function(name) {
+        // 打开调试工具查看输出
+        console.log('event::', name);
+    });
+});
 ```

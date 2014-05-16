@@ -8,7 +8,7 @@ define(function (require, exports, module) {
     // COMMON API support
     var API = require('moe/API/0.0.3/API');
     // user module
-    var User = require('moe/seedit.user/0.0.2/seedit.user');
+    var User = require('moe/seedit-user/0.0.4/seedit-user');
     // event emitter
     var Events = require('arale/events/1.1.0/events');
     // fail times

@@ -1,4 +1,4 @@
-define("moe/seedit.loginBox/0.0.3/loginBox-debug", [ "moe/dialog/0.0.2/dialog-debug", "moe/API/0.0.3/API-debug", "arale/events/1.1.0/events-debug" ], function(require, exports, module) {
+define("moe/seedit-loginBox/0.0.4/loginBox-debug", [ "moe/dialog/0.0.2/dialog-debug", "moe/API/0.0.3/API-debug", "moe/seedit-user/0.0.4/seedit-user-debug", "arale/events/1.1.0/events-debug" ], function(require, exports, module) {
     // @todo 支持读取最近登录用户名
     var $ = jQuery;
     // dialog
@@ -8,7 +8,7 @@ define("moe/seedit.loginBox/0.0.3/loginBox-debug", [ "moe/dialog/0.0.2/dialog-de
     // COMMON API support
     var API = require("moe/API/0.0.3/API-debug");
     // user module
-    var User = require("moe/seedit.user/0.0.2/seedit.user-debug");
+    var User = require("moe/seedit-user/0.0.4/seedit-user-debug");
     // event emitter
     var Events = require("arale/events/1.1.0/events-debug");
     // fail times
