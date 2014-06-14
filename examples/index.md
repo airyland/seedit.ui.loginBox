@@ -3,8 +3,7 @@
 ---
 
 ````javascript
-seajs.use('loginBox', function(loginBox){
-    var $ = jQuery;
+seajs.use(['index','jquery'], function(loginBox,$){
     var box = new loginBox({trigger:'#trigger'});
     box.on('open',function(){
     console.log('open');

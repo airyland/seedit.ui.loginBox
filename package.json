@@ -1,23 +1,38 @@
 {
-    "family": "moe",
-    "name": "seedit-loginBox",
-    "version": "0.0.4",
-    "description": "common login Dialog",
-    "homepage": "https://github.com/airyland/seedit.ui.loginBox",
-    "author": "",
-    "repository": {
-        "type": "git",
-        "url": "git://github.com/airyland/seedit.ui.loginBox.git"
+  "name": "seedit-loginbox",
+  "version": "0.0.7",
+  "description": "common login Dialog",
+  "homepage": "https://github.com/airyland/seedit.ui.loginBox",
+  "author": "",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/airyland/seedit.ui.loginBox.git"
+  },
+  "bugs": {
+    "url": ""
+  },
+  "keywords": [],
+  "licenses": "MIT",
+  "spm": {
+    "main": "index.js",
+    "output": [
+      "./src/loginBox.css"
+    ],
+    "alias": {},
+    "devAlias": {},
+    "engines": {
+      "seajs-text": "1.1.0",
+      "seajs": "2.2.1"
     },
-    "bugs": {
-        "url": ""
+    "dependencies": {
+      "jquery": "1.8.3",
+      "seedit-api": "0.0.5",
+      "seedit-user": "0.0.6",
+      "eventor": "0.0.1",
+      "dialoger": "1.0.0"
     },
-    "keywords": [],
-    "licenses": "MIT",
-    "spm": {
-        "output": ["loginBox.js", "loginBox.css"],
-        "alias": {},
-        "devAlias": {},
-        "engines": {}
+    "devDependencies": {
+      "seajs": "2.2.1"
     }
+  }
 }

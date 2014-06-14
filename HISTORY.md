@@ -2,9 +2,13 @@
 
 ---
 
+## 0.0.7
+
+`CHANGED` 彻底重构，更换dialog组件，更换API组件
+
 ## 0.0.3
 
-`CHANGE` dialog 依赖更新到`0.0.2`
+`CHANGED` dialog 依赖更新到`0.0.2`
 
 ## 0.0.1
 
