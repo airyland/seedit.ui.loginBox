@@ -160,18 +160,18 @@ loginBox.prototype.init = function(option) {
         $(option.trigger).on('click.loginBox', function() {
             _this.show();
         });
-    } else {
-        _this.$dialog.show();
     }
     return this;
 };
 
 loginBox.prototype.hide = function() {
     this.$dialog.hide();
+    return this;
 };
 
 loginBox.prototype.show = function() {
     this.$dialog.show();
+    return this;
 };
 
 module.exports = loginBox;
