@@ -21,8 +21,8 @@
     "alias": {},
     "devAlias": {},
     "engines": {
-      "seajs-text": "1.1.0",
-      "seajs": "2.2.1"
+      "seajs": "2.2.1",
+      "seajs-text": "1.1.0"
     },
     "dependencies": {
       "jquery": "1.8.3",
