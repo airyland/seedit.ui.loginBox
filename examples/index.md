@@ -5,6 +5,7 @@
 ````javascript
 seajs.use(['index','jquery'], function(loginBox,$){
     var box = new loginBox({trigger:'#trigger'});
+    console.log(box);
     box.on('open',function(){
     console.log('open');
 }).on('authSuccess',function(uid){
