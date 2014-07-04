@@ -31,7 +31,8 @@ $doc.on('keydown', '#JS_lb_form input,#JS_lb_form select,#JS_lb_form textarea', 
         if (next.length) {
             next.focus();
         } else {
-            form.submit();
+            $('#lb_signin').click();
+            //form.submit();
         }
         return false;
     }

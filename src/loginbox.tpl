@@ -1,14 +1,14 @@
 <div class="loginBox">
-    <form action="" id="JS_lb_form">
+    <form method="POST" action="http://account.seedit.com/" id="JS_lb_form">
         <h3>播种网帐号登录</h3>
         <ul>
             <li>
                 <label for="lb_username">用户名:</label>
-                <input type="text" id="lb_username" tabindex="1"> <a href="http://account.seedit.com/register/index" class="lb_signup" tabindex="4">新用户注册</a>
+                <input type="text" id="lb_username" tabindex="1" name="account"> <a href="http://account.seedit.com/register/index" class="lb_signup" tabindex="4">新用户注册</a>
             </li>
             <li>
                 <label for="lb_password">密码:</label>
-                <input type="password" id="lb_password" tabindex="2">
+                <input type="password" id="lb_password" tabindex="2" name="password">
                 <a href="http://account.seedit.com/register/findpwd" class="lb_findpwd" tabindex="5"> <i class="lb-tip-icon">&#13545</i>忘记密码</a>
             </li>
         </ul>

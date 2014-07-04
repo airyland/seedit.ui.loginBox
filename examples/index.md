@@ -2,6 +2,8 @@
 
 ---
 
+ <script src="http://scdn.bozhong.com/source/common/js/jquery.min.js" type="text/javascript"></script>
+
 ````javascript
 seajs.use(['index','jquery'], function(loginBox,$){
     var box = new loginBox({trigger:'#trigger'});
