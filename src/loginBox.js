@@ -2,8 +2,6 @@
 var $ = require('jquery');
 // dialog
 var Dialog = require('dialoger');
-// async require styles
-require.async([ /*'moe/alert/0.0.1/alert.css',*/ './loginBox.css']);
 // COMMON API support
 var API = require('seedit-api').scope('common');
 // user module
