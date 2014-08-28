@@ -15,6 +15,8 @@
 
 ## 配置说明
 
++ title 默认为`播种网帐号登录`
+
 
 ###  trigger *String*
 

@@ -139,8 +139,9 @@ loginBox.prototype.bind = function () {
 };
 loginBox.prototype.prepare = function () {
     var _this = this;
+	var title = this.o.title || '播种网帐号登录';
     this.$dialog = new Dialog({
-        content: loginHTML,
+        content: loginHTML.replace('{{title}}',title),
         effect: 'fade'
     }).before('show',function () {
             _this.trigger('open');

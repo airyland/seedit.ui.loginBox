@@ -1,6 +1,6 @@
 <div class="loginBox">
     <form method="POST" action="http://account.seedit.com/" id="JS_lb_form">
-        <h3>播种网帐号登录</h3>
+        <h3>{{title}}</h3>
         <ul>
             <li>
                 <label for="lb_username">用户名:</label>
