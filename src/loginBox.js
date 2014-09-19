@@ -44,7 +44,7 @@ loginBox.prototype.bind = function() {
         $pwd = _this.$box.find('.lb_password').eq(0),
         $signin = _this.$box.find('.lb_signin').eq(0),
         $form = _this.$box.find('.lb_form').eq(0),
-        $alert = _this.$box.find('lb_alert').eq(0);
+        $alert = _this.$box.find('.lb_alert').eq(0);
 
     var submitHandler = function(e) {
         e.preventDefault();

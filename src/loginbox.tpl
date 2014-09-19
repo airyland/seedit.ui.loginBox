@@ -13,7 +13,7 @@
             </li>
         </ul>
         <button type="submit" class="lb_signin x-btn x-btn-danger x-btn-small pull-right" tabindex="3">登 录</button>
-        <div class="alert alert-error" class="lb_alert"> <i class="lb-tip-icon">&#13544</i>
+        <div class="alert alert-error lb_alert"> <i class="lb-tip-icon">&#13544</i>
             <span>登录失败了，请重试</span>
         </div>
     </form>
