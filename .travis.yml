@@ -4,7 +4,7 @@ node_js:
   - "0.10"
 
 install:
-  - npm install spm coveralls
+  - npm install spmjs/spm coveralls
 
 before_script:
   - spm config registry http://moekit.com
