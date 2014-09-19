@@ -1,7 +1,6 @@
-// @todo 支持读取最近登录用户名
-var $ = require('jquery');
-// Config 
-var Config = require('seedit-config'),
+var $ = require('jquery'),
+    // Config 
+    Config = require('seedit-config'),
     // dialog
     Dialog = require('arale-dialog'),
     // COMMON API support
