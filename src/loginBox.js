@@ -123,6 +123,8 @@ loginBox.prototype.bind = function() {
     //点击登录，按钮disable,如果有出错消息进行清除
     this.on('submitStart', function() {
         $signin.prop('diabled', true).text('提交中');
+        // 隐藏错误信息
+        $alert.is(':visible') && $alert.hide();
     });
 
     // 登录结束，按钮enable
