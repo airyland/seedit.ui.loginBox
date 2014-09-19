@@ -11,11 +11,11 @@
 ---
 
 ## 使用说明
-该模块为全站统一弹窗，依赖于 `dialog`及`API`组件
+该模块为全站统一弹窗，依赖于 `arale-dialog`及`seedit-api`组件
 
 ## 配置说明
 
-+ title 默认为`播种网帐号登录`
++ title 默认为`播种网帐号登录`，可以为`html`代码
 
 
 ###  trigger *String*

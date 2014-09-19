@@ -2,17 +2,13 @@
 
 ---
 
+
+````iframe:600
 <script>
-    seajs.config({
-        path:'http://dev02.seedit.com/ui/'
-    })
-</script>
-
-
-
-````javascript
-seajs.use(['index','jquery'], function(loginBox,$){
-    var box = new loginBox({}).show();
+seajs.use(['index','jquery','arale-dialog/1.4.1/src/dialog.css','src/loginBox.css'] ,function(loginBox,$){
+    var box = new loginBox({
+        title: '我是新的标题<span style="font-size:12px;color:#666;padding-left:5px;">我是小标题呀</span></span>'
+    }).show();
     box.on('open',function(){
     console.log('open');
 }).on('authSuccess',function(uid){
@@ -27,8 +23,8 @@ seajs.use(['index','jquery'], function(loginBox,$){
 box.on('all',function(name){
     console.log('event::',name);
 });
-console.log(box);
 });
+</script>
 ````
 
 

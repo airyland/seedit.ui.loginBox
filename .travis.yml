@@ -7,7 +7,7 @@ install:
   - npm install spm coveralls
 
 before_script:
-  - spm config source:default.url http://moekit.com
+  - spm config registry http://moekit.com
   - node_modules/spm/bin/spm-install
 
 script:
