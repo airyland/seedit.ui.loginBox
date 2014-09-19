@@ -16,7 +16,8 @@
   "spm": {
     "main": "index.js",
     "output": [
-      "./src/loginBox.css"
+      "./src/loginBox.css",
+      "./src/seedit_login_btn.png"
     ],
     "alias": {},
     "devAlias": {},

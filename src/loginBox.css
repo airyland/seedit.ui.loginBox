@@ -684,8 +684,8 @@ button.x-btn.x-btn-mini, input[type="submit"].x-btn.x-btn-mini {
 .loginBox li label {display:block;width:60px;text-align:right;float:left;color:#3f3f3f;margin-right:10px;line-height:32px;font-family:微软雅黑;}
 .lb_social {float:left;padding:0 25px 0 20px;}
 .lb_qq,.lb_weibo {display:inline-block;width:120px;height:24px;text-indent:-9999px;}
-.lb_qq {margin-right:4px;background:url(http://images.infzm.com/images/passport/snsicon/qq.png);margin-left:-3px;}
-.lb_weibo {background:url(http://images.infzm.com/images/passport/snsicon/sina.png);}
+.lb_qq {margin-right:4px;background:url(http://scdn.bozhong.com/source/moe/seedit-login/0.0.8/src/seedit_login_btn.png) no-repeat 0 0;margin-left:-3px;}
+.lb_weibo {background:url(http://scdn.bozhong.com/source/moe/seedit-login/0.0.8/src/seedit_login_btn.png) no-repeat -120px 0;}
 .loginBox h3 {padding-top:10px;font-size:18px;margin:0;font-family:微软雅黑;margin-left:18px;color:#e1261c;font-weight:normal;margin-bottom:10px;border-bottom:1px solid #ececec;padding-bottom:10px;margin-right:10px;}
 .loginBox h4 {margin:0;color:#808080;margin-bottom:10px;padding-bottom:10px;font-family:Arial,宋体;font-weight:normal;display:inline-block;line-height:24px;margin-bottom:0;font-size:12px;}
 
