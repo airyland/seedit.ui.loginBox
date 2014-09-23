@@ -1,6 +1,6 @@
 define(function(require) {
 
-  var loginBox = require('loginBox');
+  var loginBox = require('index');
 
   describe('loginBox', function() {
 

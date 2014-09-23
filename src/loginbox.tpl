@@ -1,4 +1,4 @@
-<div class="loginBox">
+<div class="login-box">
     <form method="POST" action="{{account}}" class="lb_form">
         <h3>{{title}}</h3>
         <ul>

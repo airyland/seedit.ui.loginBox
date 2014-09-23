@@ -4,6 +4,8 @@
 
 
 ````iframe:600
+<link rel="stylesheet" href="http://source.lz.bzdev.net/bbs/css/bbs.common.min.css?jn0">
+
 <script>
 seajs.use(['index','jquery','arale-dialog/1.4.1/src/dialog.css','src/loginBox.css'] ,function(loginBox,$){
     var box = new loginBox({
