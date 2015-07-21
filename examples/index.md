@@ -2,12 +2,22 @@
 
 ---
 
-````iframe:600
-<script>
-seajs.use(['index','jquery','arale-dialog/1.4.1/src/dialog.css','src/loginBox.css'], function(loginBox,$){
-    var box = new loginBox({trigger:'#trigger'});
-    console.log(box);
-    box.on('open',function(){
+
+<link rel="stylesheet" href="../spm_modules/arale-dialog/1.4.1/src/dialog.css">
+<link rel="stylesheet" href="../src/loginBox.css">
+
+````html
+<a href="javascript:" id="trigger" class="btn btn-danger">点我登录</a>
+
+打开浏览器调试窗口查看输出
+````
+
+````javascript
+var loginBox = require('seedit-login'),
+    $ = require('jquery');
+var box = new loginBox({trigger:'#trigger'});
+  
+box.on('open',function(){
     console.log('open');
 }).on('authSuccess',function(uid){
     console.log('登录成功啦',uid)
@@ -23,13 +33,8 @@ box.on('all',function(name){
     console.log('event::',name);
 });
 console.log(box);
-});
-</script>
-
-
-<a href="javascript:" id="trigger" class="btn btn-danger">点我登录</a>
-
-打开浏览器调试窗口查看输出
-
-
 ````
+
+
+
+

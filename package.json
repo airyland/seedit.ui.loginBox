@@ -1,6 +1,6 @@
 {
   "name": "seedit-login",
-  "version": "0.0.8",
+  "version": "0.0.9",
   "description": "站内统一登录弹窗",
   "homepage": "https://github.com/airyland/seedit.ui.loginBox",
   "author": "",
@@ -15,10 +15,6 @@
   "licenses": "MIT",
   "spm": {
     "main": "index.js",
-    "output": [
-      "./src/loginBox.css",
-      "./src/seedit_login_btn.png"
-    ],
     "alias": {},
     "devAlias": {},
     "engines": {
@@ -31,7 +27,8 @@
       "seedit-user": "0.0.6",
       "eventor": "0.0.3",
       "arale-dialog": "1.4.1",
-      "seedit-config": "0.1.1"
+      "seedit-config": "0.1.1",
+      "handlebars-runtime": "1.3.0"
     },
     "devDependencies": {
       "seajs": "2.2.1"

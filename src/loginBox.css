@@ -681,6 +681,7 @@ button.x-btn.x-btn-mini, input[type="submit"].x-btn.x-btn-mini {
 .login-box ul{padding:0;padding:0 30px 0 15px;}
 .login-box li{list-style:none;margin-bottom:15px;}
 .login-box li input {font-family:Arial,宋体;width:240px;border:1px solid #ccc;border-radius:2px;padding:6px 5px;color:#666;}
+.login-box li input.login-code-input {width:120px;}
 .login-box li label {display:block;width:60px;text-align:right;float:left;color:#3f3f3f;margin-right:10px;line-height:32px;font-family:微软雅黑;}
 .lb_social {float:left;padding:0 25px 0 20px;}
 .lb_qq,.lb_weibo {display:inline-block;width:120px;height:24px;text-indent:-9999px;}

@@ -11,8 +11,14 @@
                 <input type="password" class="lb_password" tabindex="2" name="password">
                 <a href="{{account}}/register/findpwd" class="lb_findpwd" tabindex="5"> <i class="lb-tip-icon">&#13545</i>忘记密码</a>
             </li>
+            <li class="login-code-box" style="display:none;margin-top:-8px;">
+                <label for="login_code">验证码:</label>
+                <input type="hidden" name="token" value="" class="login-token-input">
+                <input type="text" class="login-code-input" class="lb-login-code" tabindex="2" name="code">
+                <img src="" alt="更新验证码" class="login-captcha" style="position: relative;top: 12px;">
+            </li>
         </ul>
-        <button type="submit" class="lb_signin x-btn x-btn-danger x-btn-small pull-right" tabindex="3">登 录</button>
+        <button type="submit" class="lb_signin x-btn x-btn-danger x-btn-small" tabindex="3">登 录</button>
         <div class="alert alert-error lb_alert"> <i class="lb-tip-icon">&#13544</i>
             <span>登录失败了，请重试</span>
         </div>

@@ -5,14 +5,16 @@ var $ = require('jquery'),
     Dialog = require('arale-dialog'),
     // COMMON API support
     API = require('seedit-api'),
-    // user module
-    User = require('seedit-user'),
-    // event emitter
-    Events = require('eventor'),
-    // fail times
-    authFailNo = 0,
-    // cahce document
-    $doc = $(document);
+    // BBS API
+    bbsAPI = API.scope('bbs');
+// user module
+User = require('seedit-user'),
+// event emitter
+Events = require('eventor'),
+// fail times
+authFailNo = 0,
+// cahce document
+$doc = $(document);
 
 var lastLoginInfo = User.getLastLoginInfo(),
     lastLoginName = lastLoginInfo['username'] || '',
@@ -29,7 +31,16 @@ var loginBox = function(option) {
     this.o = (function() {
         return o;
     })();
+    // token
+    this.token = window.login_token || '';
     this.prepare();
+
+    // 找到验证码相关
+    this.$tokenBox = this.$box.find('.login-code-box').eq(0);
+    this.$token = this.$box.find('.login-token-input').eq(0);
+    this.$code = this.$box.find('.login-code-input').eq(0);
+    this.$captcha = this.$box.find('.login-captcha').eq(0);
+    this.shouldValidate = false;
     return this.init(o);
 };
 
@@ -83,18 +94,33 @@ loginBox.prototype.bind = function() {
 
         // validate pass, submit the form
         _this.trigger('submitStart');
-        API.post('ucenter/login', {
+
+        //$('#login_code').val('');
+        var data = {
             username: $username.val(),
             password: $pwd.val()
-        }, function(data) {
+        };
+
+        if (_this.token) {
+            data.token = _this.token;
+            data.code = _this.$code.val();
+        }
+        API.post('ucenter/login', data, function(data) {
             _this.trigger('submitDone', 'success');
             _this.trigger('authSuccess', data.data.uid);
             API.get('bbs/common_member', function(data) {
                 _this.trigger('userinfoGotSuccess', data);
             }, function(error) {
                 _this.trigger('userinfoGotError', error)
-            })
+            });
+
+            this.$tokenBox.hide();
+            this.$code.val('');
         }, function(error) {
+            if (error.error_code === 7001 || error.error_code === 7003) {
+                _this.checkCode();
+            }
+
             authFailNo++;
             _this.trigger('submitDone', 'error');
             _this.trigger('authError', error, authFailNo);
@@ -156,8 +182,12 @@ loginBox.prototype.prepare = function() {
         content: loginHTML.replace('{{title}}', title),
         effect: 'fade'
     }).before('show', function() {
+        _this.checkCode();
         _this.trigger('open');
     }).after('hide', function() {
+        this.$tokenBox && this.$tokenBox.hide();
+        this.$code && this.$code.val('');
+        $('.lb_alert').hide();
         _this.trigger('hide');
     }).render();
 
@@ -166,6 +196,15 @@ loginBox.prototype.prepare = function() {
 };
 // initialize
 loginBox.prototype.init = function(option) {
+    if (window.showLoading === true) {
+        window.showLoading = false;
+    }
+
+    var loading = document.getElementById('g-loader');
+    if (loading) {
+        loading.style.display = 'none';
+    }
+
     var _this = this;
     // 没有trigger，自动弹出
     if (option.trigger) {
@@ -185,5 +224,73 @@ loginBox.prototype.show = function() {
     this.$dialog.show();
     return this;
 };
+
+loginBox.prototype.checkCode = function() {
+    var _this = this;
+
+    // 刷新验证码
+    _this.$captcha.off('click').on('click', function() {
+        $(this).attr('src', 'http://bbs.' + Config.getMainDomain() + '/restful/misc/captcha.json?token=' + _this.token + '&timestamp=' + (new Date().getTime()));
+    });
+
+    // 已经有token
+    if (_this.token !== '') {
+    
+        _this.$tokenBox.show();
+        var img = buildUrl(_this.token);
+        this.$captcha.attr('src', img);
+        return;
+    }else{
+        (function(_this) {
+        setTimeout(function() {
+            // 检查是否需要验证码
+            API.put('ucenter/login', function(data) {
+                if (data.data && data.data.need_code === 1) {
+                    // 需要验证码
+                    _this.shouldValidate = true;
+                    // 显示验证码输入
+                    _this.$tokenBox.show();
+
+                    // 如果已经有token
+                    if (_this.token !== '') {
+                        var img = buildUrl(_this.token);
+                        _this.$captcha.attr('src', img);
+                    } else {
+                        // 获取token
+                        API.get('http://bbs.' + Config.getMainDomain() + '/restful/misc/token.jsonp', {
+                            type: 'member_login'
+                        }, function(data) {
+                            if (data.data && data.data.token === '') {
+
+                            } else {
+                                _this.token = data.data.token;
+                                window.login_token = data.data.token;
+                                // 拼出图片地址
+                                var img = buildUrl(_this.token);
+                                _this.$token.val(data.data.token);
+                                _this.$captcha.attr('src', img);
+                            }
+                        }, function(error) {});
+                    }
+                }
+            }, function(error) {});
+        }, 0);
+    })(_this);
+    }
+
+    
+};
+
+function buildUrl(token) {
+    return 'http://bbs.' + Config.getMainDomain() + '/restful/misc/captcha.json?token=' + token + '&timestamp=' + (new Date().getTime());
+};
+
+if (window.showLoader === true) {
+    new loginBox().on('authSuccess', function() {
+        document.location.reload();
+    }).show();
+    document.getElementById('g-loader').style.display = 'none';
+    window.showLoader = false;
+}
 
 module.exports = loginBox;
